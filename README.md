@@ -1,4 +1,4 @@
-# coverage-istanbul [![codecov](https://codecov.io/gh/caillu/examples/branch/master/graph/badge.svg)](https://codecov.io/gh/caillu/examples)
+# coverage-istanbul [![Build Status](https://travis-ci.org/caillu/examples.svg?branch=coverage-istanbul)](https://travis-ci.org/caillu/examples) [![codecov](https://codecov.io/gh/caillu/examples/branch/master/graph/badge.svg)](https://codecov.io/gh/caillu/examples)
 ----------
 
 How to set up istanbul to send coverage reports to codecov.
