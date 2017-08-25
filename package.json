@@ -1,0 +1,72 @@
+{
+  "name": "coverage-istanbul",
+  "version": "1.0.0",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "webpack",
+    "clean": "rimraf \"dist/\" \".nyc_output\" \"coverage\"",
+    "test": "npm run test:server && npm run test:client",
+    "test:client": "karma start --single-run",
+    "test:server": "mocha --reporter spec --compilers ts:ts-node/register 'tests/server/**/*.spec.ts'",
+    "coverage:client": "npm run test:client",
+    "coverage:server": "nyc mocha --compilers ts-node/register --require source-map-support/register --recursive \"tests/server/**/*.spec.ts\"",
+    "postcoverage:server": "npm run coverage:convert",
+    "coverage": "npm run coverage:client && npm run coverage:server",
+    "postcoverage": "npm run coverage:send",
+    "coverage:send": "codecov",
+    "coverage:convert": "nyc report --reporter=json",
+    "predevServer": "npm run build",
+    "devServer": "webpack-dev-server --open"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "all": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caillu/examples.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caillu/examples/issues"
+  },
+  "homepage": "https://github.com/caillu/examples#readme",
+  "devDependencies": {
+    "@types/chai": "4.0.4",
+    "@types/chai-as-promised": "0.0.31",
+    "@types/mocha": "2.2.42",
+    "@types/node": "8.0.24",
+    "awesome-typescript-loader": "3.2.3",
+    "babel-core": "6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "chai": "4.1.1",
+    "chai-as-promised": "7.1.1",
+    "codecov": "2.3.0",
+    "html-webpack-plugin": "2.30.1",
+    "istanbul": "0.4.5",
+    "karma": "1.7.0",
+    "karma-chai": "0.1.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage": "1.1.1",
+    "karma-mocha": "1.3.0",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-webpack": "2.0.4",
+    "mocha": "3.5.0",
+    "nyc": "11.1.0",
+    "raw-loader": "0.5.1",
+    "rimraf": "2.6.1",
+    "source-map-support": "0.4.16",
+    "ts-node": "3.3.0",
+    "typescript": "2.4.2",
+    "webpack": "3.5.5",
+    "webpack-dev-server": "2.7.1"
+  },
+  "dependencies": {
+    "axios": "0.16.2",
+    "express": "4.15.4"
+  }
+}

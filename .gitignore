@@ -1,0 +1,15 @@
+# Mac
+.DS_Store
+
+# Webstorm
+.idea
+
+node_modules/
+npm-debug.log*
+
+# Build
+dist/
+
+# Coverage reports
+coverage/
+.nyc/
