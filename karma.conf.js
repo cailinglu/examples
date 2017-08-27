@@ -5,12 +5,15 @@ const configuration = {
     './src/client/**/*.ts', // Source files glob
   ],
   preprocessors: {
-    './tests/client/**/*.ts': [ 'karma-typescript' ], // Process test files
-    './src/client/**/*.ts': [ 'karma-typescript' ] // Process client files
+    './tests/client/**/*.ts': 'karma-typescript', // Process test files
+    './src/client/**/*.ts': 'karma-typescript' // Process client files
   },
   karmaTypescriptConfig: {
     reports: {
-      'lcov': 'coverage'
+      'lcovonly': {
+        directory: 'coverage',
+        filename: 'karma-lcov.info'
+      }
     }
   },
   frameworks: [ 'mocha', 'chai', 'karma-typescript' ],
@@ -18,8 +21,7 @@ const configuration = {
     'karma-chai',
     'karma-mocha',
     'karma-chrome-launcher',
-    'karma-sourcemap-loader',
-    'karma-typescript'
+    'karma-typescript',
   ],
   mime: {
     "text/x-typescript": [ "ts", "tsx" ]
