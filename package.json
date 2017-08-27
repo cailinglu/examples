@@ -13,7 +13,7 @@
     "postcoverage:server": "npm run coverage:convert",
     "coverage": "npm run clean && npm run coverage:client && npm run coverage:server",
     "postcoverage": "npm run coverage:send",
-    "coverage:send": "codecov",
+    "coverage:send": "codecov -f coverage/*.info",
     "coverage:convert": "nyc report --reporter=lcov",
     "predevServer": "npm run build",
     "devServer": "webpack-dev-server --open"
