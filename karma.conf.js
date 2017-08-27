@@ -1,28 +1,30 @@
-const WEBPACK_CONFIG = require('./webpack.config');
-
 const configuration = {
   basePath: '',
   files: [
-    './tests/client/**/*.spec.ts',
-    './src/client/**/*.ts',
+    './tests/client/**/*.ts', // Test files glob
+    './src/client/**/*.ts', // Source files glob
   ],
   preprocessors: {
-    './tests/client/**/*.ts': [ 'webpack', 'sourcemap' ],
+    './tests/client/**/*.ts': [ 'karma-typescript' ], // Process test files
+    './src/client/**/*.ts': [ 'karma-typescript' ] // Process client files
   },
-  frameworks: [ 'mocha', 'chai' ],
+  karmaTypescriptConfig: {
+    reports: {
+      'lcov': 'coverage'
+    }
+  },
+  frameworks: [ 'mocha', 'chai', 'karma-typescript' ],
   plugins: [
     'karma-chai',
-    'karma-chrome-launcher',
     'karma-mocha',
+    'karma-chrome-launcher',
     'karma-sourcemap-loader',
-    'karma-webpack',
-    'karma-coverage'
+    'karma-typescript'
   ],
   mime: {
     "text/x-typescript": [ "ts", "tsx" ]
   },
-  webpack: WEBPACK_CONFIG,
-  reporters: 'coverage',
+  reporters: [ 'dots', 'karma-typescript' ],
   port: 8000,
   browsers: [ 'Chrome' ],
   colors: true,
@@ -32,9 +34,6 @@ const configuration = {
       base: 'Chrome',
       flags: [ '--no-sandbox' ]
     }
-  },
-  coverageReporter: {
-    type: 'lcovonly'
   }
 };
 

@@ -11,10 +11,10 @@
     "coverage:client": "npm run test:client",
     "coverage:server": "nyc mocha --compilers ts-node/register --require source-map-support/register --recursive \"tests/server/**/*.spec.ts\"",
     "postcoverage:server": "npm run coverage:convert",
-    "coverage": "npm run coverage:client && npm run coverage:server",
+    "coverage": "npm run clean && npm run coverage:client && npm run coverage:server",
     "postcoverage": "npm run coverage:send",
     "coverage:send": "codecov",
-    "coverage:convert": "nyc report --reporter=json",
+    "coverage:convert": "nyc report --reporter=lcov",
     "predevServer": "npm run build",
     "devServer": "webpack-dev-server --open"
   },
@@ -23,7 +23,7 @@
       ".ts"
     ],
     "include": [
-      "src/**/*.ts"
+      "src/server**/*.ts"
     ],
     "all": true
   },
@@ -51,9 +51,9 @@
     "karma": "1.7.0",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "2.2.0",
-    "karma-coverage": "1.1.1",
     "karma-mocha": "1.3.0",
     "karma-sourcemap-loader": "0.3.7",
+    "karma-typescript": "3.0.5",
     "karma-webpack": "2.0.4",
     "mocha": "3.5.0",
     "nyc": "11.1.0",
