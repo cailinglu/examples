@@ -6,13 +6,13 @@ const configuration = {
   ],
   preprocessors: {
     './tests/client/**/*.ts': 'karma-typescript', // Process test files
-    './src/client/**/*.ts': 'karma-typescript' // Process client files
+    './src/client/**/*.ts': 'karma-typescript' // Process source files
   },
   karmaTypescriptConfig: {
     reports: {
       'lcovonly': {
         directory: 'coverage',
-        filename: 'karma-lcov.info'
+        filename: 'lcov.info'
       }
     }
   },

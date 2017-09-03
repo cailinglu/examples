@@ -12,4 +12,4 @@ dist/
 
 # Coverage reports
 coverage/
-.nyc/
+.nyc_output

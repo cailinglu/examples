@@ -9,11 +9,11 @@
     "test:client": "karma start --single-run",
     "test:server": "mocha --reporter spec --compilers ts:ts-node/register 'tests/server/**/*.spec.ts'",
     "coverage:client": "npm run test:client",
-    "coverage:server": "nyc mocha --compilers ts-node/register --require source-map-support/register --recursive \"tests/server/**/*.spec.ts\"",
+    "coverage:server": "nyc mocha --compilers ts-node/register --require source-map-support/register --recursive \"tests/server/*.ts\"",
     "postcoverage:server": "npm run coverage:convert",
     "coverage": "npm run clean && npm run coverage:client && npm run coverage:server",
     "postcoverage": "npm run coverage:send",
-    "coverage:send": "codecov -f coverage/*.info",
+    "coverage:send": "codecov",
     "coverage:convert": "nyc report --reporter=lcov",
     "predevServer": "npm run build",
     "devServer": "webpack-dev-server --open"
@@ -23,7 +23,7 @@
       ".ts"
     ],
     "include": [
-      "src/server**/*.ts"
+      "src/server/**/*.ts"
     ],
     "all": true
   },
